@@ -26,8 +26,8 @@ const Layout = () => {
           <Header toggleNavbar={toggleNavbar} />
           <main className="p-4">
             <Routes>
-              <Route path="/" element={<Navigate to="/dashboard" />} />
-              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/" element={<Navigate to="/deskstaff" />} />
+              <Route path="/deskstaff" element={<Dashboard />} />
               <Route path="/employees" element={<Employees />} />
               <Route path="/plantilla-position" element={<PlantillaPosition />} />
               <Route path="/designations" element={<Designations />} />
