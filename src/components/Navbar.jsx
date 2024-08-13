@@ -9,7 +9,7 @@ import {
 import { MdDashboard } from "react-icons/md";
 
 const navItems = [
-  { icon: MdDashboard, label: "DASHBOARD", path: "/desktaff" },
+  { icon: MdDashboard, label: "DASHBOARD", path: "/deskstaff" },
   { icon: FaUserCircle, label: "EMPLOYEES", path: "/employees" },
   { icon: FaChartBar, label: "PLANTILLA POSITION", path: "/plantilla-position" },
   { icon: FaUsers, label: "DESIGNATION", path: "/designations" },
