@@ -10,7 +10,7 @@ import { MdDashboard } from "react-icons/md";
 import { IoMdClose } from "react-icons/io";
 
 const navItems = [
-  { icon: MdDashboard, label: "DASHBOARD", path: "/deskstaff" },
+  { icon: MdDashboard, label: "DASHBOARD", path: "/deskstaff-app" },
   { icon: FaUserCircle, label: "EMPLOYEES", path: "/employees" },
   { icon: FaChartBar, label: "PLANTILLA POSITION", path: "/plantilla-position" },
   { icon: FaUsers, label: "DESIGNATION", path: "/designations" },

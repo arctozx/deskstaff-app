@@ -32,7 +32,7 @@ const Layout = () => {
         <main className="flex-1 overflow-auto p-4">
           <Routes>
             <Route path="/" element={<Dashboard />} />
-            <Route path="/deskstaff" element={<Dashboard />} />
+            <Route path="/deskstaff-app" element={<Dashboard />} />
             <Route path="/employees" element={<Employees />} />
             <Route path="/plantilla-position" element={<PlantillaPosition />} />
             <Route path="/designations" element={<Designations />} />
