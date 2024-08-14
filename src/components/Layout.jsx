@@ -9,17 +9,26 @@ import Designations from "../pages/Designations";
 import Notifications from "../pages/Notifications";
 
 const Layout = () => {
-  const [isNavbarVisible, setIsNavbarVisible] = useState(false);
+  const [isNavbarExpanded, setIsNavbarExpanded] = useState(false);
+  const [isMobileNavbarVisible, setIsMobileNavbarVisible] = useState(false);
 
   const toggleNavbar = () => {
-    setIsNavbarVisible(!isNavbarVisible);
+    if (window.innerWidth >= 1024) {
+      setIsNavbarExpanded(!isNavbarExpanded);
+    } else {
+      setIsMobileNavbarVisible(!isMobileNavbarVisible);
+    }
   };
 
   return (
-    <div className="h-screen flex flex-col">
-      <Header toggleNavbar={toggleNavbar} />
-      <div className="flex flex-1 overflow-hidden">
-        <Navbar isVisible={isNavbarVisible} toggleNavbar={toggleNavbar} />
+    <div className="flex h-screen">
+      <Navbar 
+        isExpanded={isNavbarExpanded} 
+        isMobileVisible={isMobileNavbarVisible} 
+        toggleNavbar={toggleNavbar}
+      />
+      <div className="flex-1 flex flex-col overflow-hidden">
+        <Header toggleNavbar={toggleNavbar} />
         <main className="flex-1 overflow-auto p-4">
           <Routes>
             <Route path="/" element={<Dashboard />} />

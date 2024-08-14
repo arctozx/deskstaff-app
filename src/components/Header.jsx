@@ -5,7 +5,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 const Header = ({ toggleNavbar }) => {
   return (
     <div className="flex justify-between items-center p-4 bg-white shadow-md">
-      <button onClick={toggleNavbar} className="lg:hidden">
+      <button onClick={toggleNavbar}>
         <GiHamburgerMenu size={24}/>
       </button>
       <div className="relative hover:cursor-pointer">

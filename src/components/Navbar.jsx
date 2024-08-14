@@ -17,44 +17,69 @@ const navItems = [
   { icon: FaTrophy, label: "NOTIFICATIONS", path: "/notifications" },
 ];
 
-const Navbar = ({ isVisible, toggleNavbar }) => {
+const Navbar = ({ isExpanded, isMobileVisible, toggleNavbar }) => {
   return (
-    <div
-      className={`fixed inset-y-0 left-0 z-30 w-64 bg-blue-800 text-white transform ${
-        isVisible ? "translate-x-0" : "-translate-x-full"
-      } transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0`}
-    >
-      <div className="flex justify-between items-center p-4 lg:hidden">
-        <FaUserCircle size={40} />
-        <button onClick={toggleNavbar} className="text-white">
-          <IoMdClose size={24} />
-        </button>
-      </div>
-      <div className="hidden lg:flex justify-center items-center p-4">
-        <FaUserCircle size={40} />
-      </div>
-      <nav className="mt-8">
-        {navItems.map(({ icon: Icon, label, path }, index) => (
-          <NavLink
-            key={index}
-            to={path}
-            className={({ isActive }) =>
-              `flex items-center px-4 py-4 hover:bg-blue-700 cursor-pointer ${
-                isActive ? "bg-blue-700" : ""
-              }`
-            }
-            onClick={() => {
-              if (window.innerWidth < 1024) {
-                toggleNavbar();
+    <>
+      {/* Mobile Navbar */}
+      <div
+        className={`lg:hidden fixed inset-y-0 left-0 z-30 w-64 bg-blue-800 text-white transform ${
+          isMobileVisible ? "translate-x-0" : "-translate-x-full"
+        } transition-transform duration-300 ease-in-out`}
+      >
+        <div className="flex justify-between items-center p-4">
+          <FaUserCircle size={40} />
+          <button onClick={toggleNavbar} className="text-white">
+            <IoMdClose size={24} />
+          </button>
+        </div>
+        <nav className="mt-8">
+          {navItems.map(({ icon: Icon, label, path }, index) => (
+            <NavLink
+              key={index}
+              to={path}
+              className={({ isActive }) =>
+                `flex items-center px-4 py-4 hover:bg-blue-700 cursor-pointer ${
+                  isActive ? "bg-blue-700" : ""
+                }`
               }
-            }}
-          >
-            <Icon size={24} />
-            <span className="ml-4 whitespace-nowrap">{label}</span>
-          </NavLink>
-        ))}
-      </nav>
-    </div>
+              onClick={toggleNavbar}
+            >
+              <Icon size={24} />
+              <span className="ml-4 whitespace-nowrap">{label}</span>
+            </NavLink>
+          ))}
+        </nav>
+      </div>
+
+      {/* Desktop Navbar */}
+      <div
+        className={`hidden lg:block bg-blue-800 text-white h-screen transition-all duration-300 ${
+          isExpanded ? "w-64" : "w-16"
+        }`}
+      >
+        <div className="flex justify-center items-center p-4">
+          <FaUserCircle size={40} />
+        </div>
+        <nav className="mt-8">
+          {navItems.map(({ icon: Icon, label, path }, index) => (
+            <NavLink
+              key={index}
+              to={path}
+              className={({ isActive }) =>
+                `flex items-center px-4 py-4 hover:bg-blue-700 cursor-pointer ${
+                  isActive ? "bg-blue-700" : ""
+                }`
+              }
+            >
+              <Icon size={24} />
+              {isExpanded && (
+                <span className="ml-4 whitespace-nowrap">{label}</span>
+              )}
+            </NavLink>
+          ))}
+        </nav>
+      </div>
+    </>
   );
 };
 
