@@ -9,32 +9,27 @@ import Designations from "../pages/Designations";
 import Notifications from "../pages/Notifications";
 
 const Layout = () => {
-  const [isNavbarExpanded, setIsNavbarExpanded] = useState(false);
+  const [isNavbarVisible, setIsNavbarVisible] = useState(false);
 
   const toggleNavbar = () => {
-    setIsNavbarExpanded(!isNavbarExpanded);
+    setIsNavbarVisible(!isNavbarVisible);
   };
 
   return (
-    <div>
-      <div className="flex h-screen">
-        <div className={`transition-all duration-300 ${isNavbarExpanded ? "w-64" : "w-16"}`}>
-          <Navbar isExpanded={isNavbarExpanded} />
-        </div>
-
-        <div className="flex-1 overflow-auto">
-          <Header toggleNavbar={toggleNavbar} />
-          <main className="p-4">
-            <Routes>
-              <Route path="/" element={<Navigate to="/deskstaff" />} />
-              <Route path="/deskstaff" element={<Dashboard />} />
-              <Route path="/employees" element={<Employees />} />
-              <Route path="/plantilla-position" element={<PlantillaPosition />} />
-              <Route path="/designations" element={<Designations />} />
-              <Route path="/notifications" element={<Notifications />} />
-            </Routes>
-          </main>
-        </div>
+    <div className="h-screen flex flex-col">
+      <Header toggleNavbar={toggleNavbar} />
+      <div className="flex flex-1 overflow-hidden">
+        <Navbar isVisible={isNavbarVisible} toggleNavbar={toggleNavbar} />
+        <main className="flex-1 overflow-auto p-4">
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/deskstaff" element={<Dashboard />} />
+            <Route path="/employees" element={<Employees />} />
+            <Route path="/plantilla-position" element={<PlantillaPosition />} />
+            <Route path="/designations" element={<Designations />} />
+            <Route path="/notifications" element={<Notifications />} />
+          </Routes>
+        </main>
       </div>
     </div>
   );
