@@ -78,17 +78,19 @@ const Dashboard = () => {
   };
 
   return (
-    <div className=" p-6">
-      <h1 className="text-2xl font-bold mb-4">EMPLOYEES DATA</h1>
-      <div className="h-96 mb-8">
+    <div className="p-4 sm:p-6">
+      <h1 className="text-xl sm:text-2xl font-bold mb-4">EMPLOYEES DATA</h1>
+      <div className="h-64 sm:h-96 mb-8">
         <Line
           data={lineChartData}
           options={{ responsive: true, maintainAspectRatio: false }}
         />
       </div>
-      <div className="flex justify-between">
-        <div className="w-1/4">
-          <h2 className="text-xl font-semibold mb-2">TOTAL EMPLOYEES</h2>
+      <div className="flex flex-col lg:flex-row gap-8">
+        <div className="w-full lg:w-1/3">
+          <h2 className="text-lg sm:text-xl font-semibold mb-2">
+            TOTAL EMPLOYEES
+          </h2>
           <div className="relative h-64">
             <Doughnut
               data={doughnutChartData}
@@ -100,8 +102,10 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-        <div className="w-3/4">
-          <h2 className="text-xl font-semibold mb-2">EMPLOYEE DISTRIBUTION</h2>
+        <div className="w-full lg:w-2/3">
+          <h2 className="text-lg sm:text-xl font-semibold mb-2">
+            EMPLOYEE DISTRIBUTION
+          </h2>
           <div className="h-64">
             <Bar
               data={barChartData}
